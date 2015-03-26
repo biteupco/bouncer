@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"github.com/gorilla/mux"
+    "github.com/bouncer/auth"
 )
 
 func main() {
@@ -36,5 +37,5 @@ func HomeHandler(rw http.ResponseWriter, r *http.Request){
 }
 
 func signHandler(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "signHandler")
+	auth.SignupHandler(rw)
 }
