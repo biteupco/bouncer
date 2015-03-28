@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-    "github.com/bouncer/auth"
+    "./auth"
 )
 
 var port int
