@@ -1,6 +1,6 @@
 package auth
 
-import "testing"
+//import "testing"
 
 type Test struct {
     in  int
