@@ -22,10 +22,8 @@ func hasEndpoint(r *mux.Router, ep endPoint) bool {
 	if err != nil {
 		panic(err)
 	}
-
 	var match mux.RouteMatch
-	ok := r.Match(req, &match)
-	return ok
+	return r.Match(req, &match)
 }
 
 func TestAppRoutes(t *testing.T) {
