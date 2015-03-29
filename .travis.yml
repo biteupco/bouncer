@@ -11,6 +11,7 @@ go:
 cache: apt
 
 install:
+- go get github.com/kr/godep
 - go get github.com/gorilla/mux
 
 before_script:
