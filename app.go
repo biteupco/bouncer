@@ -17,7 +17,7 @@ func init() {
 		defaultPort = 8080
 		portUsage   = "port number"
 	)
-	flag.IntVar(&port, "p", defaultPort, portUsage)
+	flag.IntVar(&port, "port", defaultPort, portUsage)
 }
 
 func setupServer() *mux.Router {
