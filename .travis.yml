@@ -1,7 +1,19 @@
+branches:
+  only:
+    - master
+    - authentication
+
 language: go
 
 go:
-  - 1.4
-  - tip
+- 1.3
+
+cache: apt
+
 install:
-  - go get github.com/gorilla/mux
+- go get github.com/gorilla/mux
+
+before_script:
+
+script:
+- go test

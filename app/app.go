@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gobbl/bouncer/controllers"
 	"github.com/gorilla/mux"
 	auth "github.com/gobbl/bouncer"
 )
@@ -19,12 +20,10 @@ func init() {
 	flag.IntVar(&port, "p", defaultPort, portUsage)
 }
 
-func main() {
-
-	flag.Parse()
-
+func setupServer() *mux.Router {
 	r := mux.NewRouter().StrictSlash(false)
-	r.HandleFunc("/", HomeHandler).Methods("GET")
+	r.HandleFunc("/", controllers.GetHomeHandler).Methods("GET")
+	r.HandleFunc("/status", controllers.GetStatusHandler).Methods("GET")
 
 	/*
 		signup := r.Path("/signup").Subrouter()
@@ -42,12 +41,18 @@ func main() {
 		login.Methods("PUT", "POST").HandlerFunc(PostUpdateHandler)
 		login.Methods("DELETE").HandlerFunc(PostDeleteHandler)
 	*/
-	fmt.Printf("Starting server on port:%d", port)
-	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
+	return r
+
 }
 
-func HomeHandler(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "Hello, world")
+func main() {
+
+	flag.Parse()
+
+	r := setupServer()
+
+	fmt.Printf("Starting server on port:%d", port)
+	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 }
 
 func signHandler(rw http.ResponseWriter, r *http.Request) {
