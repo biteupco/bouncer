@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"log"
 
 	controllers "github.com/gobbl/bouncer/controllers"
 	"github.com/gorilla/mux"
