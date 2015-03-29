@@ -46,7 +46,7 @@ func setupServer() *mux.Router {
 }
 
 func main() {
-
+	fmt.Println("Good Morning, Sir")
 	flag.Parse()
 
 	r := setupServer()
