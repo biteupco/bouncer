@@ -1,1 +1,1 @@
-web: bouncer -port=$PORT
+web: bouncer
