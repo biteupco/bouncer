@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"log"
-	"os"
+
 	controllers "github.com/gobbl/bouncer/controllers"
 	"github.com/gorilla/mux"
 )
@@ -17,20 +17,14 @@ func init() {
 		defaultPort = 8080
 		portUsage   = "port number"
 	)
-
-	port := os.Getenv("PORT")
-    if port == "" {
-		flag.IntVar(&port, "p", defaultPort, portUsage)
-    }
+	flag.IntVar(&port, "p", defaultPort, portUsage)
 }
 
 func setupServer() *mux.Router {
 	r := mux.NewRouter().StrictSlash(false)
-	r.HandleFunc("/", controllers.GetHomeHandler).Methods("GET").Schemes("https")
+	r.HandleFunc("/", controllers.GetHomeHandler).Methods("GET")
 	r.HandleFunc("/status", controllers.GetStatusHandler).Methods("GET")
 
-	signup := r.Path("/signup").Subrouter()
-	signup.Methods("POST").HandlerFunc(signHandler)
 	/*
 		signup := r.Path("/signup").Subrouter()
 		signup.Methods("POST").HandlerFunc(signHandler)
