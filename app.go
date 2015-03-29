@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gobbl/bouncer/controllers"
+	controllers "github.com/gobbl/bouncer/controllers"
 	"github.com/gorilla/mux"
-	auth "github.com/gobbl/bouncer"
 )
 
 var port int
@@ -25,6 +24,8 @@ func setupServer() *mux.Router {
 	r.HandleFunc("/", controllers.GetHomeHandler).Methods("GET")
 	r.HandleFunc("/status", controllers.GetStatusHandler).Methods("GET")
 
+	signup := r.Path("/signup").Subrouter()
+	signup.Methods("POST").HandlerFunc(signHandler)
 	/*
 		signup := r.Path("/signup").Subrouter()
 		signup.Methods("POST").HandlerFunc(signHandler)
@@ -56,5 +57,5 @@ func main() {
 }
 
 func signHandler(rw http.ResponseWriter, r *http.Request) {
-	auth.SignupHandler(rw)
+	controllers.SignupHandler(rw)
 }
