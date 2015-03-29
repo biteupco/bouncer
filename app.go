@@ -53,7 +53,8 @@ func main() {
 	r := setupServer()
 
 	fmt.Printf("Starting server on port:%d", port)
-	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
+	http.Handle("/", r)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
 
 func signHandler(rw http.ResponseWriter, r *http.Request) {
