@@ -11,6 +11,8 @@ cache: apt
 
 install:
 - go get github.com/gorilla/mux
+- go get github.com/kelseyhightower/envconfig
+- go get gopkg.in/mgo.v2
 
 before_script:
 
