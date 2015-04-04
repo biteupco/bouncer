@@ -1,4 +1,6 @@
 # bouncer
+[![Build Status](https://travis-ci.org/gobbl/bouncer.svg?branch=master)](https://travis-ci.org/gobbl/bouncer)
+
 Toughest guy in the hood.
 
 ## Setup
