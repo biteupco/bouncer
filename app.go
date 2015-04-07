@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"log"
 
-	controllers "github.com/gobbl/bouncer/controllers"
+	"github.com/gobbl/bouncer/controllers"
 	"github.com/gorilla/mux"
 )
 
@@ -46,15 +46,10 @@ func setupServer() *mux.Router {
 }
 
 func main() {
-	fmt.Println("Good Morning, Sir")
 	flag.Parse()
 
 	r := setupServer()
 
 	fmt.Printf("Starting server on port:%d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), r))
-}
-
-func signHandler(rw http.ResponseWriter, r *http.Request) {
-	controllers.SignupHandler(rw)
 }
