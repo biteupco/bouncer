@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"crypto/rand"
+	"io"
 )
 type uniqueID string
 
