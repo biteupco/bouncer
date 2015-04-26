@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gobbl/bouncer/controllers"
+	"github.com/gobbl/bouncer/models"
 	"github.com/gorilla/mux"
 )
 
@@ -49,6 +50,9 @@ func main() {
 	flag.Parse()
 
 	r := setupServer()
+
+	models.Start()
+	defer models.Close()
 
 	fmt.Printf("Starting server on port:%d", port)
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
