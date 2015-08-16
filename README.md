@@ -3,6 +3,8 @@
 
 Toughest guy in the hood.
 
+> Note: we have moved the authentication service over to Gitlab so as to keep the repository private. This repo remains as a decommissioned product.
+
 ## Setup
 
 Please ensure you have Go installed.
