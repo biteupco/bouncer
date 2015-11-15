@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"log"
 
 	"github.com/gobbl/bouncer/controllers"
 	"github.com/gobbl/bouncer/models"
@@ -17,7 +18,7 @@ func init() {
 		defaultPort = 8080
 		portUsage   = "port number"
 	)
-	flag.IntVar(&port, "p", defaultPort, portUsage)
+	flag.IntVar(&port, "port", defaultPort, portUsage)
 }
 
 func setupServer() *mux.Router {
@@ -46,7 +47,6 @@ func setupServer() *mux.Router {
 }
 
 func main() {
-
 	flag.Parse()
 
 	r := setupServer()
@@ -55,9 +55,5 @@ func main() {
 	defer models.Close()
 
 	fmt.Printf("Starting server on port:%d", port)
-	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
-}
-
-func signHandler(rw http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(rw, "signHandler")
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), r))
 }
